@@ -1,9 +1,11 @@
 extern crate getopts;
+
 use std::{env, process};
 use getopts::Options;
 
 #[derive(Debug)]
 struct Args {
+    program: String,
     input: Vec<String>,
     import_file: Option<String>,
     read_id: Option<String>,
@@ -37,6 +39,7 @@ fn parse_args() -> Args {
     }
 
     Args {
+        program: program,
         input: matches.free.clone(),
         import_file: matches.opt_str("I"),
         read_id: matches.opt_str("R"),
